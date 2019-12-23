@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign in NYSL</title>
+  <link rel="stylesheet" href="./styles/nysl_3.css">
+  <script src="./scripts/nysl.js"></script>
+</head>
+
+<body>
+  <div class="subtitulo">
+    <div id="subtitle">
+    <h2 id="title">Rules of play & Policy</h2>
+    </div>
+    <img id="logo" src="images/nysl_logo.png" alt="logo">
+    <nav>
+
+      <p class="boton"> <a class="menu" href="home.html">Home</p>
+      <p class="boton"> <a class="menu" href="rules.html">Rules & Policy</a></p>
+      <p class="boton"> <a class="menu" href="game info.html">Game Info</a></p>
+      <p class="boton"> <a class="menu" href="about.html">About NYSL</a></p>
+      <p class="boton" id="active"> <a class="menu" href="form.html">Enroll</a></p>
+      <p class="boton"> <a class="menu" href="contact.html">Contact</a></p>
+
+    </nav>
+  </div>
+  <div class="encabezado">
+    <h1 id="titulo">Northside Youth Soccer League</h1>
+  </div>
+
+
+  <div class="section">
+
+    <div class="contenido">
+
+      <h2 id="titform">Registration Form</h2>
+
+
+
+      <article class="formulario">
+
+        <form action="show_data.html" method="get">
+
+
+          <div id="nombr">
+            <label for="nombre">*Player's First Name</label>
+            <input type="text" name="nombre" required>
+            <label for="apellido">*Last Name</label>
+            <input type="text" name="apellido" required>
+          </div>
+
+
+          <div id="dir">
+            <label for="direccion">Street Address</label>
+            <input type="text" name="direccion">
+            <label for="ciudad">City</label>
+            <input type="text" name="ciudad">
+            <label> Zip Code
+              <input type="text" name="zipcode">
+            </label>
+          </div>
+
+          <div id="sex">
+            <label for="nacimiento" placeholder="YYYY/MM/DD">Birth Date</label>
+            <input type="date" name="nacimiento">
+            <label for="gender">Gender:</label>
+            <select name="gender">
+              <option value="neutral">--</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+
+          </div>
+
+          <div id="prot">
+
+            <label for="protect">*Parent/Guardian</label>
+            <input type="text" name="protect" required>
+
+            <br>
+          </div>
+
+          <div id="contact">
+
+            <label for="telf">Phone number</label>
+            <input type="tel" name="telf">
+
+            <label for="mail">*E-mail</label>
+            <input type="email" name="mail" placeholder="example@example.xxx" required>
+
+          </div>
+
+
+          <div id="tabl">
+
+            <p id="which"><strong> Which elementary school do you live near?</strong></p>
+
+            <div id="school">
+
+              <table id="first">
+                <th>First closest school:
+                  <tr>
+                    <td><input type="checkbox">AJ Katzenmaier</td>
+                    <td><input type="checkbox">Marjorie P Hart</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Greenbay</td>
+                    <td><input type="checkbox">North Elementary</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Howard A Yeager</td>
+                    <td><input type="checkbox">South Elementary</td>
+                  </tr>
+                </th>
+
+              </table>
+
+              <table id="second">
+                <th>Second closest school:
+                  <tr>
+                    <td><input type="checkbox">AJ Katzenmaier</td>
+                    <td><input type="checkbox">Marjorie P Hart</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Greenbay</td>
+                    <td><input type="checkbox">North Elementary</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Howard A Yeager</td>
+                    <td><input type="checkbox">South Elementary</td>
+                  </tr>
+                </th>
+              </table>
+            </div>
+
+            <div id="questions">
+              <div id="what1">
+
+                <p><strong>What position(s) do you normally play? (check all that apply)</strong></p>
+
+                <table class="formtab">
+
+                  <tr>
+                    <td><input type="checkbox">Forward</td>
+                    <td><input type="checkbox">Midfield</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Defense</td>
+                    <td><input type="checkbox">Goalkeeper</td>
+                  </tr>
+
+
+
+                </table>
+              </div>
+              <div id="what2">
+                <p id="what2"><strong>Which position(s) do you want to play? (check all that apply)</strong> </p>
+
+                <table class="formtab">
+
+                  <tr>
+                    <td><input type="checkbox">Forward</td>
+                    <td><input type="checkbox">Midfield</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Defense</td>
+                    <td><input type="checkbox">Goalkeeper</td>
+                  </tr>
+
+
+                </table>
+              </div>
+
+            </div>
+
+            <p id="which"><input type="checkbox">Already have a uniform.</p>
+            <div id="ropa">
+
+              <table id="jersey">
+                <th>Jersey size:
+                  <tr>
+                    <td><input type="checkbox">Youth small</td>
+                    <td><input type="checkbox">Medium</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Youth medium</td>
+                    <td><input type="checkbox">Large</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Large youth</td>
+                    <td><input type="checkbox">Extra-large</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Small</td>
+                  </tr>
+                </th>
+
+              </table>
+
+              <table id="shorts">
+                <th>Shorts size:
+                  <tr>
+                    <td><input type="checkbox">Youth small</td>
+                    <td><input type="checkbox">Medium</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Youth medium</td>
+                    <td><input type="checkbox">Large</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Large youth</td>
+                    <td><input type="checkbox">Extra-large</td>
+                  </tr>
+                  <tr>
+                    <td><input type="checkbox">Small</td>
+                  </tr>
+                </th>
+              </table>
+            </div>
+          </div>
+
+
+          <div id="permission">
+            <p class="perm">I, the parent or guardian of the minor registrant, agree that the registrant and I will abide by all the rules of the Northside Youth Soccer League (NYSL). In recognizing the possibility of physical injury associated with
+              soccer and in consideration for the “League” accepting the registrant for its soccer programs and activities, I hereby release, discharge, and/or otherwise indemnify NYSL, their employees and associated personnel and volunteers,
+              including the facilities used for practices and games, against any claim by or on behalf of the registrant as a result of the registrant’s participation in the program and/or being transported to or from NYSL sponsored activities, which
+              transportation.</p>
+            <p class="perm">By signing below, I hereby agree and authorize the above. In addition, by signing below, I also acknowledge that I have read the cancellation policy and agree to its terms.</p>
+
+            <div id="permit">
+              <label for="firma"> Parent/guardian signature</label>
+              <input id="signature" type="text" name="firma">
+
+              <label for="fecha">Date</label>
+              <input type="date" name="fecha" placeholder="YYYY/MM/DD">
+            </div>
+          </div>
+
+          <div id="botenv">
+            <input type="submit" name="enviar" id="benviar" value="Submit">
+          </div>
+
+          <p><u><i>** Fields marked with "*" are required.</i></u></p>
+
+        </form>
+
+
+
+      </article>
+
+    </div>
+  </div>
+
+
+
+  <div class="footer">
+    <div class="topper">
+      <button onclick="topFunction()" id="parriba" title="Go to top">Back to the top</button>
+      <script>
+        //Get the button
+        var mybutton = document.getElementById("parriba");
+      </script>
+    </div>
+    <div class="reachme">
+      <p>Awesomely developed by <a class="linkedin" href="https://www.linkedin.com/in/adrianmohmedsanz/">Adrián Mohmed Sanz</a></p>
+      <a href="https://www.linkedin.com/in/adrianmohmedsanz/"><img id="lin" src="./images/white-linkedin-icon-transparent-background-17.jpg"></a>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{
+    "mongoURI": "mongodb+srv://adriAdmin:RCS3wCnMD3Bm6qb@cluster-mytinerary-ygzfb.mongodb.net/Ubiqum-MERN?retryWrites=true&w=majority",
+    "jwtSecret": "mySecret",
+    "secretOrKey": "secret",
+    "GOOGLE_CLIENT_ID": "487141576641-osqut6jarfnhu8sbrnk2jo1etf29359d.apps.googleusercontent.com",
+    "GOOGLE_CLIENT_SECRET": "03bqxAxz3jPJv8wAGnu4IEQ_"     
+    
+
+}

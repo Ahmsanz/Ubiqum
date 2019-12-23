@@ -1,0 +1,157 @@
+/*
+  ========================================
+  Grid
+  ========================================
+*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+header {
+    display: block;
+    
+}
+
+p {
+  width: fit-content;
+  margin: 0 0 10px 0;
+  
+}
+.encabezado {
+    display: block;
+    margin: 0;
+	padding-left: 30px;
+	padding-right: 30px;
+    width: 90%;
+    height: 150px;
+    background-image: url("Images/design1_image1.jpg");
+    background-size: cover;
+    border:2px;
+    border-color: black;
+    color: whitesmoke;
+    border-radius: 5px;
+  }
+
+  .subtitulo {
+    display: block;
+    margin: 0;
+	padding-left: 30px;
+	padding-right: 30px;
+    width: 90%;
+    height: 45px;
+    background: black;
+    border: 3px solid green;
+    border-radius:5px;
+    text-align: center;
+        
+
+  }
+
+  #logo {
+    display: block;
+    position: relative;
+    float: right;
+    
+    width: 100px;
+    margin: -60px 50px 0 0;
+        
+  }
+
+  #title {
+    
+    color: white;
+    text-align: center;
+    margin: 8px 0 0 0;
+    
+    
+
+  }
+
+  
+
+  nav {
+    display: block;
+    float: left;
+    padding-bottom: 50px;
+    
+    margin-top: 40px;
+    width: 20%;
+    
+}
+
+a.menu {
+  color: black;
+  text-decoration: none;
+  font-style: bold;
+}
+
+.button {
+background-color: none;
+padding: 5px;
+box-sizing: padding-box;
+box-shadow: 0 3px 3px 0;
+
+
+}
+
+.button:hover {
+  background-color: lavender;
+   
+  color: purple;
+}
+
+/* selected link */
+#active {
+background-color: rgb(189, 127, 127);
+
+padding: 5px;
+box-sizing: padding-box;
+box-shadow: 5px purple;
+
+}
+
+
+section {
+            
+      margin: 10px;
+      
+      word-wrap: break-word;
+      padding-right: 0;
+            
+
+  }
+
+  .menu {
+    display: inline;
+  }
+
+  .contenido {
+    display: block;
+    position: relative;
+    float: right;
+    width: 80%;
+    margin-left: 0;
+    margin-top: 0px;
+  }
+
+  /* mouse over link */
+
+
+ 
+ 
+ul {
+  
+  list-style-type: none;
+  
+} 
+
+.event {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  padding-left: 0px;
+}

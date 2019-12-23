@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Senate Attendance</title>
+  <link rel="stylesheet" href="../styles/bootstrap.css">
+  <link rel="stylesheet" href="../styles/tgif.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+
+    <body>
+      <div class="jumbotron jumbotron-fluid" >
+        <h1><a href="./tgif_home.html">Transparent Government in Fact</a></h1>
+      </div>
+      <div class="encabezado">
+        <div class="datosUp">
+        <img src="../styles/images/logo2.png" id="logo2">
+        <a id="correo" href="mailto:info@tgif.com">info@tgif.com</a>
+        </div>
+
+      </div>
+
+  <div class="contenido">
+
+<div class="barraLateral">
+
+    <nav class="navbar dark navbar-expand-sm">
+  <a class="navbar-brand" href="#"><img id="logo"src="../styles/images/logo1.gif" alt="Capitol Logo"></a>
+  <ul class="navbar-nav">
+  <li class="nav-item">
+    <a class="nav-link" href="./tgif_home.html">Home</a>
+  </li>
+  <div class="mostrar">
+  <li class="nav-item">
+    <a class="nav-link"href="#">Congress</a>
+    <div class="oculto">
+      <ul>
+        <li><a href="./tgif_house.html">House of representatives</a></li>
+        <li><a href="./tgif_senate.html">Senate</a></li>
+      </ul>
+      </div>
+  </li>
+  </div>
+  <div class="mostrar">
+  <li class="nav-item">
+    <a class="nav-link"href="#">Attendance</a>
+    <div class="oculto">
+      <ul>
+        <li><a href="./house_attendance.html">House</a></li>
+        <li><a href="./senate_attendance.html">Senate</a></li>
+      </ul>
+      </div>
+  </li>
+  </div>
+  <div class="mostrar">
+  <li class="nav-item">
+    <a class="nav-link"href="#">Party Loyalty</a>
+    <div class="oculto">
+      <ul>
+        <li><a href="./house_loyalty.html">House</a></li>
+        <li><a href="./senate_loyalty.html">Senate</a></li>
+      </ul>
+      </div>
+  </li>
+  </div>
+  </ul>
+  </nav>
+  <div id="firma">
+
+    <p>Proudly developed by <a href="https://www.linkedin.com/in/adrianmohmedsanz/">Adrián Mohmed Sanz</a>
+    </p>
+
+        <a href="https://www.linkedin.com/in/adrianmohmedsanz/">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+
+
+</div>
+</div>
+
+  <div class="content">
+    <div class="entradilla">
+            <h2>Attendance</h2>
+            <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
+
+            <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+    </div>
+    <div class="tablas">
+            <h2>Senate at a glance</h2>
+            <table class="table col-sm-3 table-hover">
+                <thead class="thead-green">
+                    <tr>
+                        <th>Party</th>
+                        <th>Number of Reps</th>
+                        <th>% Voted with Party</th>
+                    </tr>
+                </thead>
+                <tbody id="glance-stats">
+
+                </tbody>
+            </table>
+            <div class="tablas2">
+              <div>
+            <h2>Least Engaged (Bottom 10% Attendance)</h2>
+            <table class="table col-sm-3 table-hover">
+                <thead class="thead-green">
+                    <tr>
+                        <th>Name</th>
+                        <th>Number of Missed Votes</th>
+                        <th>% Missed</th>
+                    </tr>
+                </thead>
+                <tbody id="least-stats">
+
+                </tbody>
+            </table>
+            </div>
+            <div>
+
+            <h2>Most Engaged (Top 10% Attendance)</h2>
+            <table class="table col-sm-3 table-hover">
+                <thead class="thead-green">
+                    <tr>
+                        <th>Name</th>
+                        <th>Number of Missed Votes</th>
+                        <th>% Missed</th>
+                    </tr>
+                </thead>
+                <tbody id="most-stats" >
+
+                </tbody>
+            </table>
+            </div>
+
+        </div>
+        <div id="cargador" role="status"></div>
+    	</div>
+    </div>
+
+    </div>
+  </div>
+
+      <footer class="page-footer font-small mdb-color pt-4">
+
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+
+          <!-- Footer links -->
+          <div class="row text-center text-md-left mt-3 pb-3">
+
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Congress of the United States of America</h6>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.4884989586612!2d-77.0112391844307!3d38.88994305498825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b82921a2cf17%3A0x482a3f7c10cf8c4!2sCapitolio%20de%20los%20Estados%20Unidos!5e0!3m2!1ses!2ses!4v1570611604861!5m2!1ses!2ses" width="300" height="150" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            </div>
+            <!-- Grid column -->
+
+            <hr class="w-100 clearfix d-md-none">
+
+
+            <!-- Grid column -->
+
+            <hr class="w-100 clearfix d-md-none">
+
+
+
+
+
+
+            <!-- Grid column -->
+            <hr class="w-100 clearfix d-md-none">
+
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+              <p>
+                <i class="fas fa-home mr-3"></i> First St SE, Washington, DC 20004, US.</p>
+              <p>
+                <i class="fas fa-envelope mr-3"></i> info@tgif.com</p>
+              <p>
+                <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+              <p>
+                <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+            <!-- Grid column -->
+
+          </div>
+          <!-- Footer links -->
+
+          <hr>
+
+          <!-- Grid row -->
+          <div class="row d-flex align-items-center">
+
+            <!-- Grid column -->
+            <div class="col-md-7 col-lg-8">
+
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-5 col-lg-4 ml-lg-0">
+
+              <!-- Social buttons -->
+
+            <!-- Grid column -->
+
+          </div>
+          <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+      </footer>
+      <!-- Footer -->
+
+          <!-- jQuery first, then Tether, then Bootstrap JS. -->
+          <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+          <script src="../scripts/tgif_functions.js" charset="utf-8"></script>
+
+
+</body>
+</html>

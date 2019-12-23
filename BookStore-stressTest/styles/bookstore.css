@@ -1,0 +1,193 @@
+::webkit scroll {
+  width: 0;
+  background-color: transparent;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.encabezado {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid rgb(51, 134, 139);
+  border-radius: 12px;
+  padding: 0px 20px;
+  height: 100px;
+  margin: 20px 0 0 0;
+  color: rgb(51, 134, 139);
+
+
+}
+
+.content {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.búsqueda {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.filtro {
+  margin: 0 0 0 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.filtro i, input {
+  margin: 0 10px 0 0;
+
+}
+
+.busqueda input {
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+  margin: 0 0 0 10px;
+  font-size: 17px;
+  color: dimgray;
+  background-color: rgb(51, 134, 139, 0.2);
+}
+.logo img{
+  width: 160px;
+  height: 160px;
+}
+
+
+
+.books {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  background-image: url("./images/estanteria vacia.jpg");
+  background-size: contain;
+  margin: 20px 0 0 0;
+  heigth: 1200px;
+  overflow-y: scroll;
+
+
+
+
+}
+
+#books-repository  {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: auto;
+  width: 90%;
+  justify-content: center;
+
+
+}
+
+#books-repository a {
+  width: 32%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 5px;
+  overflow: hidden;
+}
+
+
+@media all and (min-width: 768px) {
+  .fancybox-thumbs {
+    top: auto;
+    width: auto;
+    bottom: 0;
+    left: 0;
+    right : 0;
+    height: auto;
+    padding: 0;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  @media all and (min-width: 640px) {
+    .fancybox-thumbs {
+      top: auto;
+      width: auto;
+      bottom: 0;
+      left: 0;
+      right : 0;
+      height: auto;
+      padding: 0;
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+  .fancybox-show-thumbs .fancybox-inner {
+    right: 0;
+    bottom: 95px;
+  }
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 320px;
+
+  height: 500px;
+  border-radius: 10px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+
+
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  border-radius: 10px;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 320px;
+  height: 500px;
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: transparent;
+  color: black;
+
+}
+
+.flip-card-front img {
+  width: 100%;
+  heigth: 100%;
+  border-radius: 10px;
+}
+/* Style the back side */
+.flip-card-back {
+  background-color: rgb(51, 134, 139);
+  color: white;
+  transform: rotateY(180deg);
+  border-radius: 10px;
+}
+
+.flip-card-back p {
+  text-align: justify;
+  padding: 24px;
+}
