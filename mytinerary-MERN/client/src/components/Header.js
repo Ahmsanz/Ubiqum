@@ -1,9 +1,5 @@
 import React from 'react'
 import Logo from '../MYtineraryLogo.png'
-import Arrow from '../arrow.png'
-import Cities from './Cities2'
-import Register from './Register'
-import {Link, NavLink} from 'react-router-dom'
 
  function Header() {
     return (
