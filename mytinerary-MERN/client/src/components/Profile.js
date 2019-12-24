@@ -19,7 +19,7 @@ class Profile extends Component {
     }
 
     getUserByToken() {
-        if (this.state.users != null) {
+        
         let token = localStorage.userToken
         
         let decoded = jwt_decode(token);
@@ -30,7 +30,7 @@ class Profile extends Component {
         .then (res => {console.log(res); this.setState({users: res.data})})
         .catch(err => console.log(err, 'something went wrong'))
 
-        }
+        
       }
 
     handleClick = (e) => {
