@@ -109,51 +109,10 @@ router.get('/google/redirect', passport.authenticate ('google'), (req, res) =>
             )
         })
         
-        
-        // console.log(token)
+       
 
     }
-    // }
-
-
-
-
 )
-//   passport.authenticate('google', {failureRedirect: '/login'},
-//   (req, res) => {
-    
-//     jwt.sign (        
-//         (err, token) => {
-//             if (err) throw err;
-//             res.send(token)
-
-        
-    
-      
-    
-//         // Successful authentication, redirect home.
-//         console.log(res)
-//          res.redirect('http://localhost:3000/Redirect' + token, () => {
-//             console.log ('redirection',res)
-//             window.localStorage(res.json);
-//         });
-//         })
-//   }))
-
-
-
-
-
-
-// callback route for google to redirect to
-
-
-// hand control to passport to use code to grab profile info
-// router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-//     res.send('you reached the redirect URI');
-// });
-
-
 
 
 module.exports = router;

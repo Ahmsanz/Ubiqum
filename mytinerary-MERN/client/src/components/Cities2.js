@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Link } from 'react-router-dom'
-import Filter from './Filter'
 import {getCities} from '../store/actions/citiesActions'
 import {addCity} from '../store/actions/citiesActions'
 import { connect } from 'react-redux'

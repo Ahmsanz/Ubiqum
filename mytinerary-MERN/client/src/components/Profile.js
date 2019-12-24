@@ -13,10 +13,13 @@ class Profile extends Component {
     }
 
     componentDidMount() {
+        if (localStorage.userToken) {
         this.getUserByToken()
+        }
     }
 
     getUserByToken() {
+        
         let token = localStorage.userToken
         
         let decoded = jwt_decode(token);
@@ -26,6 +29,8 @@ class Profile extends Component {
         axios.get('http://localhost:5000/users/' + decoded._id)
         .then (res => {console.log(res); this.setState({users: res.data})})
         .catch(err => console.log(err, 'something went wrong'))
+
+        
       }
 
     handleClick = (e) => {
@@ -40,7 +45,8 @@ class Profile extends Component {
         .then (res => {console.log(res, 'Farewell, friend') })
         .then(alert('Hope to see you soon!'))
         .catch (err => console.log(err))
-               
+         
+        localStorage.clear();
 
         this.props.history.push('/')
 
@@ -104,7 +110,18 @@ class Profile extends Component {
             </div>
         ) : (
             <div>
-                <h4>Come a little closer</h4>
+                <h4 className='donde center'>Come a little closer...</h4>
+                <div>
+                    <p className = 'center'> OOPS! </p>
+                    <p className = 'center'>  Looks like you're still not logged in. </p>
+                    <p className = 'center'>  Try doing it now, or register to be one of us!</p>
+                    <div className = 'registro'>
+                        <a href='./register'><button id="registrobut" className = 'waves-effect waves-light btn' type='submit' >Register<i className="material-icons right">send</i></button></a>
+                        <a href= './login'><button href='./login' id="loginbut" className = 'waves-effect waves-light btn' type='submit' >Log in<i className="material-icons right">send</i></button></a>
+                        <a href= 'http://localhost:5000/google/google'><button id="loginbut"    className = 'waves-effect waves-light btn' type='submit' >Log in with Google<i className="material-icons right">send</i></button></a>
+                    </div>
+                </div>
+
             </div>
         );
 
@@ -141,7 +158,7 @@ class Profile extends Component {
         );
         
         return (
-            <div className = 'cuerpo'>
+            <div>
             <Navbar2 />
             <div className = 'cuerpo'>
             <div>
