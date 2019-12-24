@@ -76,7 +76,7 @@ class Register2 extends Component {
     })
 
         
-
+    window.location.assign('http://localhost:3000/login' ) 
         
     }
 
@@ -88,8 +88,9 @@ class Register2 extends Component {
         
         return (
 
+            <div className = 'cuerpo'>
 
-
+            <Navbar />
             <div className = 'container formulario'>
                 <h4 className ='donde'>Come, you shall not regret it</h4>
                 <form className= 'login' onSubmit={this.handleSubmit} >
@@ -109,6 +110,7 @@ class Register2 extends Component {
                 <button className = 'btn waves-effect waves-light' > Join!</button>
                 </div>
                 </form>
+            </div>
             </div>
 
 

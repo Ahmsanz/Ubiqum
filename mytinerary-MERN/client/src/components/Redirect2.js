@@ -36,16 +36,25 @@ class Redirect2 extends Component  {
         
     }
 
+
+  componentWillMount () {
+
+    let token = this.props.location.pathname.slice(15) || localStorage.userToken
+    localStorage.setItem ('userToken', token)
+
+  }
   componentDidMount() {
      
    this.props.getCities()
    let citiesRetrieved = this.props.cities
    
-   let token = this.props.location.pathname.slice(15) || localStorage.userToken
-   localStorage.setItem ('userToken', token)
-
+   
+   if (localStorage.userToken != null ) {
+    let token = localStorage.userToken;
   
    this.getUserByToken(token)
+
+   }
       
    this.setState({
       cities: citiesRetrieved
@@ -78,35 +87,8 @@ class Redirect2 extends Component  {
       let userID = this.state.users._id
       sessionStorage.setItem('userID', userID)
       
-     let citiesSliced = this.props.cities.slice(0,5)
-
-    
+          
        let {users} = this.state; 
-      
-     let citiesRenderd = citiesSliced.length ? (
-       citiesSliced.map( city => {
-        return (
-          
-          <div className = 'post card' key={city._id}>
-          <img src = {city.image} />  
-            <div className = 'card-content' >
-              
-              <h4 className = 'card-title red-text'>{city.name}</h4>   
-              <p>{city.country}</p>         
-            </div>
-          </div>
-          
-        )
-       })
-       
-       ) : (
-         <div>
-           <p> Getting there... </p>
-         </div>
-       );
-
-       
-      
        
        let user = users != null ? ( 
          

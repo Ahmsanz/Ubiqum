@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
-import {Link} from 'react-router-dom'
 import axios from 'axios'
 import {loginUser} from '../store/actions/usersActions'
 import Navbar2 from './Navbar2'
@@ -28,6 +27,7 @@ class LogIn extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        localStorage.clear(); sessionStorage.clear();
          let user = this.state
 
          let body = {
@@ -42,23 +42,27 @@ class LogIn extends Component {
             data: body
         })
         .then ((res) => { 
-            console.log(res); 
-            localStorage.clear(); sessionStorage.clear();
+            alert('Welcome, friend!')         
             localStorage.setItem ('userToken', res.data.token)
-            alert('Welcome')
+            console.log(res); 
+            window.location.assign('http://localhost:3000/home/redirect' )  
+            
             
 
         })
-        .then(
-            this.props.history.push('home/redirect')
-        )
         .catch(err => alert('Something went wrong! Try again, please.'))
+        
+        
                 
         
         this.setState ({
             mail: "",
             password: ""
         })
+
+        
+          
+        
         
     }
 
