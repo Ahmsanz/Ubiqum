@@ -3963,6 +3963,8 @@ tbody.collapse.show {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  width: 250px;
+  margin: 20px 0px 0 10px; 
 }
 
 .navbar-nav .nav-link {
