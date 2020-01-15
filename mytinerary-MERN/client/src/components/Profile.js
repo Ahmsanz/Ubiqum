@@ -2,13 +2,15 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
 import Navbar2 from './Navbar2'
+import Favourites from './Favourites'
+
 
 class Profile extends Component {
 
 
     state = {
         users: null,
-        favourites: []
+        favourites: ""
 
     }
 
@@ -30,9 +32,8 @@ class Profile extends Component {
 
 
         axios.get('http://localhost:5000/users/' + decoded._id)
-        .then (res => {console.log(res); this.setState({users: res.data})})
+        .then (res => {console.log(res.data.favourites); this.setState({users: res.data, favourites: this.getAllFavourites(res.data.favourites)})})
         .catch(err => console.log(err, 'something went wrong'))
-
 
 
 
@@ -58,29 +59,29 @@ class Profile extends Component {
 
     }
 
-    getFavouriteById () {
-        if (this.state.users != null) {
-
-        let id = this.state.users.favourites
-        console.log(id)
-        axios.get ('http://localhost:5000/itineraries/go/' + id)
-        .then(res => {console.log(res.data); this.setState({favourites:[res.data]})})
-        }
-      }
-
-      getAllFavourites () {
+    // getFavouriteById () {
+    //     if (this.state.users != null) {
+    //
+    //     let id = this.state.users.favourites
+    //     console.log(id)
+    //     axios.get ('http://localhost:5000/itineraries/go/' + id)
+    //     .then(res => {console.log(res.data); this.setState({favourites:[res.data]})})
+    //     }
+    //   }
+    //
+      getAllFavourites (ids) {
           let favs = [];
-          if (this.state.users != null) {
-            let ids = this.state.users.favourites
-              if (ids) {
+          // if (this.state.users != null) {
+          //   let ids = this.state.users.favourites
+          //     if (ids) {
 
                   ids.forEach(id => {
                     axios.get ('http://localhost:5000/itineraries/go/' + id)
                     .then(res => {console.log('favourites coming right away', res.status); favs.push(res.data)})
                   });
 
-                  }
-              }
+              //     }
+              // }
               console.log('favs', favs);
               return favs;
         }
@@ -91,9 +92,9 @@ class Profile extends Component {
     render () {
         console.log ('state', this.state)
 
-        // this.getFavouriteById()
 
         let users = this.state.users;
+
         let user = users != null ? (
             <div className = 'perfil'>
             <div>
@@ -132,11 +133,11 @@ class Profile extends Component {
 
 
 
-        let favourites = this.getAllFavourites();
+        let {favourites} = this.state ;
 
-        
-        let favouritesList = favourites.length ? (
-            favourites.map( favourite => {
+
+        let favsList = favourites.length ? (
+            favourites.favs.map( favourite => {
                 return (
                     <div className= 'center'>
                       <h4 className='donde'>You love these itineraries: </h4>
@@ -159,8 +160,8 @@ class Profile extends Component {
             <div>
             <p className='donde'>You don't have any favourites yet.</p>
             </div>
-        );
-
+        )
+        console.log (favourites)
         return (
             <div>
             <Navbar2 />
@@ -173,7 +174,7 @@ class Profile extends Component {
                 {user}
             </div>
             <div>
-                {favouritesList}
+              {favsList}
             </div>
             </div>
             </div>
