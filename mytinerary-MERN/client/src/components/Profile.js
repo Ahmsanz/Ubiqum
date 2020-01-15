@@ -10,7 +10,7 @@ class Profile extends Component {
 
     state = {
         users: null,
-        favourites: ""
+        favourites: []
 
     }
 
@@ -69,21 +69,16 @@ class Profile extends Component {
     //     }
     //   }
     //
-      getAllFavourites (ids) {
+    getAllFavourites (ids) {
           let favs = [];
-          // if (this.state.users != null) {
-          //   let ids = this.state.users.favourites
-          //     if (ids) {
 
-                  ids.forEach(id => {
-                    axios.get ('http://localhost:5000/itineraries/go/' + id)
-                    .then(res => {console.log('favourites coming right away', res.status); favs.push(res.data)})
-                  });
+          ids.forEach(id => {
+              axios.get ('http://localhost:5000/itineraries/go/' + id)
+              .then(res => {console.log('favourites coming right away', res.status); favs.push(res.data)})
+            });
 
-              //     }
-              // }
-              console.log('favs', favs);
-              return favs;
+          console.log('favs', favs);
+          return favs;
         }
 
 
@@ -133,24 +128,24 @@ class Profile extends Component {
 
 
 
-        let {favourites} = this.state ;
+        let favourites = this.state.favourites ;
+        console.log(favourites)
 
 
         let favsList = favourites.length ? (
-            favourites.favs.map( favourite => {
+            favourites.map( fav => {
                 return (
                     <div className= 'center'>
                       <h4 className='donde'>You love these itineraries: </h4>
 
-                      <div className="user-card ">
-                      <div>
-                        <img src = {favourite.image} alt = 'do not remember that face' />
-                      </div>
+                      <div className="user-card" key = {fav._id} >
+                        <div>
+                          <img src = {fav.image} alt = 'it is kinda foggy' />
+                        </div>
 
                       <div className = 'user-content'>
-                        <h4 className="red-text">{favourite.name}</h4>
-                        <p>{favourite.city}</p>
-
+                        <h4 className="red-text">{fav.name}</h4>
+                        <p>{fav.city}</p>
                       </div>
                       </div>
                     </div>
@@ -158,25 +153,25 @@ class Profile extends Component {
                 })
         ) : (
             <div>
-            <p className='donde'>You don't have any favourites yet.</p>
+              <p className='donde'>You don't have any favourites yet.</p>
             </div>
         )
-        console.log (favourites)
+
+
         return (
             <div>
-            <Navbar2 />
-            <div className = 'cuerpo'>
-            <div>
-                <h2 id= 'who'>Profile</h2>
-            </div>
-
-            <div >
-                {user}
-            </div>
-            <div>
-              {favsList}
-            </div>
-            </div>
+              <Navbar2 />
+              <div className = 'cuerpo'>
+                <div>
+                  <h2 id= 'who'>Profile</h2>
+                </div>
+                <div>
+                  {user}
+                </div>
+                <div>
+                  {favsList}
+                </div>
+              </div>
             </div>
         )
 
