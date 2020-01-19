@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
-import {getUsers, registerUser} from '../store/actions/usersActions'
+import {getUsers, registerUser, addUser, deleteUser} from '../store/actions/usersActions'
 import axios from 'axios'
 import Verdugo from '../verdugo.jpeg'
-import {addUser} from '../store/actions/usersActions'
-import {deleteUser} from '../store/actions/usersActions'
+
 
 
 class Users extends Component {
-    state = { 
+    state = {
 
 
       first_name: "",
@@ -18,21 +17,21 @@ class Users extends Component {
       password: ""
 
     }
-    
+
 
     componentDidMount(){
 
          this.props.getUsers()
-         
+
 
     };
 
-    
+
     handleChangeName = (e) => {
       this.setState({
 
           first_name: e.target.value})
-        
+
 
 
   }
@@ -41,7 +40,7 @@ class Users extends Component {
     this.setState({
 
       last_name: e.target.value})
-    
+
 
   }
 
@@ -49,21 +48,21 @@ class Users extends Component {
     this.setState({
 
       mail: e.target.value})
-    
+
   }
 
   handleChangePassword = (e) => {
     this.setState({
 
       password: e.target.value})
-    
+
   }
 
    handleSubmit = (e) => {
      e.preventDefault()
 
      let user = this.state;
-     
+
 
     this.props.registerUser(user);
 
@@ -77,11 +76,11 @@ class Users extends Component {
 
 
     render() {
-      
-      
-      
+
+
+
         let {users} = this.props;
-        
+
         let userList = users.length ? (
             users.map(user => {
                 return (
@@ -102,16 +101,16 @@ class Users extends Component {
         ) : (
             <div className="center">Noone's left, my Lord</div>
         )
-        
+
         return (
 
             <div className="container home">
-              
+
                 <h4 className="center donde">Already in MYtinerary:</h4>
                 <div className= 'catalogo'>
                 {userList}
                 </div>
-              
+
               <div className = 'container formulario'>
                 <form onSubmit={this.handleSubmit} >
                 <input name= 'nombre' type='text' className="text-input" onChange = {this.handleChangeName} value={this.state.first_name} placeholder="First Name" />
@@ -129,7 +128,7 @@ class Users extends Component {
               </div>
               </div>
 
-            
+
         )
 
     }

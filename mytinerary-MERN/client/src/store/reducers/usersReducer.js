@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 const initState = {
-  users: []
+  users: [],
+  favourites: [],
+  favs: []
 }
 
 
@@ -10,9 +12,9 @@ const usersReducer = (state=initState, action) => {
     case 'ADD_USER':
       return {
         ...state,
-        users: [...state.users, action.user]         
-        
-                  
+        users: [...state.users, action.user]
+
+
      }
      case 'REGISTER_USER':
        return {
@@ -28,24 +30,37 @@ const usersReducer = (state=initState, action) => {
                 users: newUsers
               }
     case 'GET_USERS':
-      
+
       return {
         ...state,
         users: [...action.payload]
-        
-        
+
+
       }
 
     case 'LOGIN_USER':
       return {
-        ...state, 
+        ...state,
         users: [action.payload]
+      }
+
+      case 'GET_USER_BY_TOKEN':
+      return {
+        ...state,
+        users: action.user,
+        favs: action.favs
+      }
+
+      case 'GET_FAVOURITES':
+      return {
+        ...state,
+        favourites: [...action.payload]
       }
     default:
         console.log("another action")
 
 }
-return state; 
+return state;
 
 }
 

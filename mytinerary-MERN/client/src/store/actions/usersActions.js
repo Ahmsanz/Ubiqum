@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import jwt_decode from 'jwt-decode'
 
 export const deleteUser = (id) => dispatch => {
 
@@ -31,33 +31,72 @@ export const getUsers = () => dispatch => {
   })
 }
 
-export const registerUser = (user) => dispatch => {
-  let body = {
-    first_name: user.first_name,
-    last_name: user.last_name,
-    age: user.age,
-    picture: user.picture,
-    mail: user.mail,
-    password: user.password
-  }
+export const getUserByToken = () => dispatch => {
 
+  let token = localStorage.userToken
 
-  axios({
-    method: 'post',
-    url: 'http://localhost:5000/users',
-    headerS: {
-    'Content-Type': 'application/json'
-    },
-    data: body,
-  
-  }).then (res => { console.log(res.status);
-        
+  let decoded = jwt_decode(token);
+
+  axios.get('http://localhost:5000/users/' + decoded._id)
+  .then (res => {console.log(res);localStorage.setItem ('favs', [res.data.favourites]);
     dispatch({
-      type: 'REGISTER_USER',
-      payload: res.data
+      type: 'GET_USER_BY_TOKEN',
+      user: res.data,
+      favs: res.data.favourites
     })
-    
   })
+  .catch(err => console.log(err, 'something went wrong'))
+
+
+
+}
+
+export const getUserFavs = (ids) => dispatch => {
+
+  let favs = [];
+
+  ids.forEach(id => {
+      axios.get ('http://localhost:5000/itineraries/go/' + id)
+      .then(res => {console.log('favourites coming right away', res.status); favs.push(res.data);
+          dispatch({
+            type: 'GET_FAVOURITES',
+            payload: favs
+          })
+        })
+      .catch(err => console.log('oops, something went wrong with those favourites', err))
+
+})
+
+
+}
+
+export const registerUser = (user) => dispatch => {
+    let body = {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      age: user.age,
+      picture: user.picture,
+      mail: user.mail,
+      password: user.password
+    }
+
+
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/users',
+      headerS: {
+      'Content-Type': 'application/json'
+      },
+      data: body,
+
+    }).then (res => { console.log(res.status);
+
+      dispatch({
+        type: 'REGISTER_USER',
+        payload: res.data
+      })
+
+    })
 
 }
 
@@ -65,7 +104,7 @@ export const registerUser = (user) => dispatch => {
 
 export const loginUser = (user) => async dispatch => {
       let body = {
-        mail: user.mail, 
+        mail: user.mail,
         password: user.password
       }
 
@@ -82,14 +121,10 @@ export const loginUser = (user) => async dispatch => {
         payload: res.data
 
       })
-      
+
     }).then(function(){
       alert ('Welcome back')
-    }).catch(err => console.log(err))  
+    }).catch(err => console.log(err))
 
 
 }
-
-  
-
-
