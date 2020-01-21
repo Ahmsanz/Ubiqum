@@ -57,11 +57,11 @@ router.post('/', (req,res) => {
                         first_name: user.first_name,
                         last_name: user.last_name,
                         picture: user.picture,
-                        mail: user.mail, 
+                        mail: user.mail,
                         token: token
                     },
                     msg: 'Welcome home, sire'
-                }); 
+                });
             }
         )
     }); console.log (user);
@@ -88,30 +88,30 @@ router.get('/google',
 
 
 //callback route for google strategy
-router.get('/google/redirect', passport.authenticate ('google'), (req, res) => 
+router.get('/google/redirect', passport.authenticate ('google'), (req, res) =>
 
-{
-     
-    userModel.findOne({_id: req.user._id})
-         .then(user => {
-            jwt.sign (
-                {_id: user._id,
-                first_name: user.first_name},
-                key.secretOrKey,
-                {expiresIn: 3600},
-                (err, token) => {
-                    if (err) throw err;
-                    
-                    
-                    res.redirect('http://localhost:3000/home/redirect/' + token)
-                    
-                }
-            )
-        })
-        
-       
+  {
 
-    }
+      userModel.findOne({_id: req.user._id})
+           .then(user => {
+              jwt.sign (
+                  {_id: user._id,
+                  first_name: user.first_name},
+                  key.secretOrKey,
+                  {expiresIn: 3600},
+                  (err, token) => {
+                      if (err) throw err;
+
+
+                      res.redirect('http://localhost:3000/home/redirect/' + token)
+
+                  }
+              )
+          })
+
+
+
+      }
 )
 
 
