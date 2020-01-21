@@ -15,7 +15,7 @@ router.get('/all',
     });
 
 
-router.get('/:itinerary',
+router.get('/go/:itinerary',
 (req, res) => {
       let itinerary = req.params.itinerary;
 
