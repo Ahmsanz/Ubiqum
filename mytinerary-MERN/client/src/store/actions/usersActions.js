@@ -100,8 +100,6 @@ export const registerUser = (user) => dispatch => {
 
 }
 
-
-
 export const loginUser = (user) => async dispatch => {
       let body = {
         mail: user.mail,

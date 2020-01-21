@@ -19,19 +19,17 @@ class Profile extends Component {
     componentWillMount () {
       if (localStorage.userToken) {
         this.props.getUserByToken();
+        this.forceUpdate();
 
       }
     }
 
     componentDidMount() {
-      console.log('initial props',this.props.favs)
 
         if (localStorage.favs) {
 
           let ids = localStorage.favs.split(',');
-          // let ids = this.props.favs;
-          console.log('ids', ids)
-          console.log ('reducer favs', this.props.favs);
+
           this.props.getUserFavs(ids);
         }
 
@@ -60,24 +58,23 @@ class Profile extends Component {
     }
 
 
-    getAllFavourites (ids) {
-          let favs = [];
-
-          ids.forEach(id => {
-              axios.get ('http://localhost:5000/itineraries/go/' + id)
-              .then(res => {console.log('favourites coming right away', res.status); favs.push(res.data)})
-            });
-
-          this.setState({favs: favs})
-          return favs;
-
-
-        }
+    // getAllFavourites (ids) {
+    //       let favs = [];
+    //
+    //       ids.forEach(id => {
+    //           axios.get ('http://localhost:5000/itineraries/go/' + id)
+    //           .then(res => {console.log('favourites coming right away', res.status); favs.push(res.data)})
+    //         });
+    //
+    //       this.setState({favs: favs})
+    //       return favs;
+    //
+    //
+    //     }
 
 
 
     render () {
-      console.log ('props', this.props)
 
         let users = this.props.users;
 
@@ -118,8 +115,7 @@ class Profile extends Component {
         );
 
 
-      let favs = this.props.favourites ;
-        console.log ('final favs',favs)
+      let favs = this.props.favourites;
 
       let favsList = favs.length ? (
             favs.map( fav => {
@@ -159,12 +155,11 @@ class Profile extends Component {
                 <div>
                  <h4 className = 'donde'> You love these itineraries </h4>
                   {favsList}
-
                 </div>
               </div>
             </div>
         )
-      
+
     }
 }
 
