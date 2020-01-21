@@ -12,6 +12,7 @@ import Plans from './components/Plans'
 import LogIn from './components/LogIn'
 import Profile from './components/Profile'
 import Redirect2 from './components/Redirect2'
+import Comments from './components/Comments'
 
 import './Mytinerary.css';
 
@@ -23,6 +24,7 @@ function App() {
         <Route exact path ='/' component = {Landing} />
         <Route path = '/home/redirect' component = { Redirect2 } />
         <Route  exact path ='/Cities' component = {Cities} />
+        <Route exact path = '/Comments' component = {Comments} />
         <Route exact path = '/Itineraries' component = {Itineraries} />
         <Route exact path = '/Users' component = {Users} />
         <Route  exact path ='/Register' component= {Register2} />

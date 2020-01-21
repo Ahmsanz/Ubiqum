@@ -1,6 +1,7 @@
 const initState = {
-    
-    itineraries: []
+
+    itineraries: [],
+    comments: []
   }
 
   const itinerariesReducer = (state = initState, action) => {
@@ -14,7 +15,7 @@ const initState = {
        }
        case 'ADD_PLAN':
          return {
-           ...state, 
+           ...state,
            activities: [...state.activities, action.payload]
          }
        case 'GET_ITINERARIES':
@@ -22,10 +23,20 @@ const initState = {
         return {
           ...state,
           itineraries: [...action.payload]
+        }
 
-
+      case 'GET_COMMENTS':
+        return {
+          ...state,
+          comments: action.comments
         }
         
+      case 'ADD_COMMENT':
+      return {
+        ...state,
+        comments: [...state.comments, action.comment]
+      }
+
     default:
         console.log("another action")
   }
