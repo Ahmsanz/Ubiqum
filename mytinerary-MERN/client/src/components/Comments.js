@@ -15,17 +15,7 @@ class Comments extends Component {
   }
 
 
-  static getDerivedStateFromProps(props, state) {
-    console.log('deriving props', props)
-    console.log('deriving state', state)
-    let name = props.itin.name;
-
-    return {
-      itinerary: props.itin
-
-    }
-  }
-
+  
   componentDidMount() {
       if (localStorage.userToken) {
 
@@ -61,7 +51,7 @@ addComment = () => {
 
   let body = {
         user: this.props.users,
-        itinerary: this.props.itinerary,
+        itinerary: this.props.itinerary.name,
         description: this.state.description,
         date: date.toDateString(),
         likes:""
@@ -99,7 +89,7 @@ addComment = () => {
      e.preventDefault()
      let {users} = this.props;
      let comment = {
-       itinerary: this.props.itinerary,
+       itinerary: this.props.itinerary.name,
        description: this.state.description,
        user: {
          first_name: users.first_name,
