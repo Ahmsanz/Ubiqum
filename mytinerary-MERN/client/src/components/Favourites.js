@@ -19,23 +19,7 @@ class Favourites extends Component {
       console.log('propiedades', this.props)
     }
 
-    // componentWillReceiveProps ( nextProps) {
-    //   let ids = nextProps.favs;
-    //   console.log('ids', ids);
-    //
-    //   this.props.getUserFavs(ids);
-    //   console.log('new state', this.state);
-    //   console.log ('new props', nextProps)
-    //   // this.props.getUserFavs(ids);
-    // }
 
-    // static getDerivedStateFromProps (props, state){
-    //   let favs = props.favs;
-    //   props.getUserFavs(favs);
-    //   return {
-    //     favourites: favs
-    //   }
-    // }
 
     getAllFavourites (ids) {
       let favs = [];
@@ -58,12 +42,7 @@ class Favourites extends Component {
         console.log ('state', this.state)
         console.log ('props', this.props)
 
-        // let favs = this.props.favs;
-        // console.log ('favs children', favs)
-
-        // let favourites = user;
-
-        // console.log(favourites)
+      
         let {favourites} = this.props;
 
         let favouritesList = favourites.length ? (

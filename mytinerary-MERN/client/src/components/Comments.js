@@ -47,7 +47,7 @@ class Comments extends Component {
       }
 
 
-  
+
 getCommentsByItin(itin) {
   axios.get ('http://localhost:5000/comments/go/' + itin)
   .then (res => this.setState({comments: res.data}))
