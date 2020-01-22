@@ -2,28 +2,58 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom'
 import {getUserByToken} from '../store/actions/usersActions'
-import {getComments, addComment} from '../store/actions/itinerariesActions'
+import {getComments, addComment, getCommentsByItin} from '../store/actions/itinerariesActions'
 import axios from 'axios'
 
 
 class Comments extends Component {
-    state = {
 
-      itinerary: "",
-      description: "",
-      comments: []
+  state = {
+    itinerary: "",
+    description: "",
+    comments: []
+  }
+
+
+  static getDerivedStateFromProps(props, state) {
+    console.log('deriving props', props)
+    console.log('deriving state', state)
+    let name = props.itin.name;
+
+    return {
+      itinerary: props.itin
 
     }
+  }
 
-componentDidMount() {
-    if (localStorage.userToken) {
+  componentDidMount() {
+      if (localStorage.userToken) {
 
-      this.props.getUserByToken();
+        this.props.getUserByToken();
+        }
+
+
+      console.log('initial state', this.state);
+      console.log('initial props', this.props);
+
+      if (this.props.itin.name != undefined) {
+      this.getCommentsByItin(this.props.itin.name)
+
+    }else {
+      setInterval(this.getCommentsByItin(this.props.itin.name), 4000)
+    }
+
+
       }
 
-    this.props.getComments();
 
-    }
+  
+getCommentsByItin(itin) {
+  axios.get ('http://localhost:5000/comments/go/' + itin)
+  .then (res => this.setState({comments: res.data}))
+  .catch ( err => console.log(err))
+}
+
 
 
 addComment = () => {
@@ -31,7 +61,7 @@ addComment = () => {
 
   let body = {
         user: this.props.users,
-        itinerary: this.state.itinerary,
+        itinerary: this.props.itinerary,
         description: this.state.description,
         date: date.toDateString(),
         likes:""
@@ -69,7 +99,7 @@ addComment = () => {
      e.preventDefault()
      let {users} = this.props;
      let comment = {
-       itinerary: this.state.itinerary,
+       itinerary: this.props.itinerary,
        description: this.state.description,
        user: {
          first_name: users.first_name,
@@ -88,10 +118,12 @@ addComment = () => {
 
     render() {
 
+
       console.log(this.props);
       console.log(this.state)
 
-        let {comments} = this.props;
+
+        let {comments} = this.state;
 
         let commentsList = comments.length ? (
             comments.map(comment => {
@@ -150,12 +182,20 @@ addComment = () => {
 
 }
 
+Comments.defaultProps = {
+
+  itin: []
+}
 
 
+const mapStateToProps = (state, ownProps) => {
+  let itin = ownProps.itin;
 
-const mapStateToProps = (state) => {
+  console.log ('ownProps', ownProps);
+  console.log('name', itin);
   return {
     users: state.user.users,
+    itinerary: state.itinerary.itineraries.find( itinerary => itinerary.name == itin.name),
     comments: state.itinerary.comments
   }
 }
@@ -166,6 +206,7 @@ const mapDispatchToProps = (dispatch) => {
 
     getUserByToken: (user) => {dispatch(getUserByToken())},
     getComments: () => {dispatch(getComments())},
+    getCommentsByItin: (itin) => { dispatch(getCommentsByItin(itin))},
     addComment: (user, comment) => {dispatch(addComment(user, comment))}
   }
 }

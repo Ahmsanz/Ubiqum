@@ -3,6 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import {getItineraries} from '../store/actions/itinerariesActions'
 import Navbar2 from './Navbar2'
+import Comments from './Comments'
 
 
 
@@ -18,6 +19,7 @@ class Itinerary extends Component {
 
     componentDidMount(){
       this.props.getItineraries();
+      
      // this.getItineraryById()
 
     }
@@ -39,15 +41,15 @@ class Itinerary extends Component {
 
         }
 
-    getCommentsByItin = () => {
-      let itinerary = this.props.itinerary.name;
+    // getCommentsByItin = () => {
+    //   let itinerary = this.props.itinerary.name;
+    //
+    //   axios.get ('http://localhost:5000/comments/go/' + itinerary)
+    //   .then(res => {console.log('comments', res.data)})
+    //   .catch(err => console.log ('cannot find any comments', err))
+    // }
 
-      axios.get ('http://localhost:5000/comments/go/' + itinerary)
-      .then(res => {console.log('comments', res.data)})
-      .catch(err => console.log ('cannot find any comments', err))
-    }
 
-    
 
     addFavItinerary (itinerary) {
 
@@ -125,6 +127,7 @@ class Itinerary extends Component {
               <div>
                 <h4 className = 'red-text center'>Take a look at this plans!</h4>
                 { activitiesList }
+                <Comments itin={this.props.itinerary} />
               </div>
             </div>
             </div>

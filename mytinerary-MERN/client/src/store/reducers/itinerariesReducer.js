@@ -30,7 +30,13 @@ const initState = {
           ...state,
           comments: action.comments
         }
-        
+
+      case 'GET_COMMENTS_BY_ITIN':
+          return {
+            ...state,
+            comments: action.comments
+          }
+
       case 'ADD_COMMENT':
       return {
         ...state,

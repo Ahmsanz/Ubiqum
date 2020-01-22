@@ -1,25 +1,41 @@
 import React, {Component} from 'react';
-import axios from 'axios'
-import jwt_decode from 'jwt-decode'
-import Navbar2 from './Navbar2'
+import { connect } from 'react-redux'
+import axios from 'axios';
+import jwt_decode from 'jwt-decode';
+import Navbar2 from './Navbar2';
+import {getUserByToken, getUserFavs} from '../store/actions/usersActions';
+
 
 class Favourites extends Component {
 
-    state = {
-      favs:"",
-      favourites: ""
-    }
+  state = {
+    favs: ""
+  }
+
+
 
     componentDidMount () {
       console.log('estado', this.state);
       console.log('propiedades', this.props)
     }
 
-    componentDidReceiveProps() {
+    // componentWillReceiveProps ( nextProps) {
+    //   let ids = nextProps.favs;
+    //   console.log('ids', ids);
+    //
+    //   this.props.getUserFavs(ids);
+    //   console.log('new state', this.state);
+    //   console.log ('new props', nextProps)
+    //   // this.props.getUserFavs(ids);
+    // }
 
-        this.getAllFavourites(this.props.favs);
-
-    }
+    // static getDerivedStateFromProps (props, state){
+    //   let favs = props.favs;
+    //   props.getUserFavs(favs);
+    //   return {
+    //     favourites: favs
+    //   }
+    // }
 
     getAllFavourites (ids) {
       let favs = [];
@@ -40,7 +56,7 @@ class Favourites extends Component {
 
     render () {
         console.log ('state', this.state)
-        console.log ('props', this.props.favs)
+        console.log ('props', this.props)
 
         // let favs = this.props.favs;
         // console.log ('favs children', favs)
@@ -48,14 +64,12 @@ class Favourites extends Component {
         // let favourites = user;
 
         // console.log(favourites)
-        let favs = this.props;
-        console.log(favs.favs)
-        let favouritesList = favs.length ? (
-            favs.favs.map( favourite => {
+        let {favourites} = this.props;
+
+        let favouritesList = favourites.length ? (
+            favourites.map( favourite => {
                 return (
                     <div className= 'center'>
-                      <h4 className='donde'>You love these itineraries: </h4>
-
                       <div className="user-card ">
                       <div>
                         <img src = {favourite.image} alt = 'do not remember that face' />
@@ -78,6 +92,7 @@ class Favourites extends Component {
 
         return (
             <div>
+              <h4 className='donde'>You love these itineraries: </h4>
                 {favouritesList}
             </div>
 
@@ -87,4 +102,26 @@ class Favourites extends Component {
     }
 }
 
-export default Favourites
+Favourites.defaultProps = {
+  favs: [],
+  favourites: []
+}
+
+const mapStateToProps = (state) => {
+  return {
+    users: state.user.users,
+    favs: state.user.favs,
+    favourites: state.user.favourites
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+
+    getUserByToken: () => {dispatch(getUserByToken())},
+    getUserFavs: (ids) => {dispatch(getUserFavs(ids))}
+
+  }
+}
+
+export default connect (mapStateToProps, mapDispatchToProps) (Favourites)

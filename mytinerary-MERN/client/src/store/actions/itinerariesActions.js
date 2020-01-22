@@ -39,7 +39,18 @@ export const getComments = () => dispatch => {
     .catch(err => console.log("can't get those comments", err))
 
 
+}
 
+export const getCommentsByItin = (itin) => dispatch => {
+
+  axios.get ('http://localhost:5000/comments/go/' + itin)
+  .then (res => {console.log (res, 'comments comming');
+    dispatch({
+      type: 'GET_COMMENTS_BY_ITIN',
+      comments: res.data
+    })
+  })
+  .catch ( err => console.log('oops, cannot get those comments', err))
 }
 
 // export const addComment = (user, comment) => dispatch => {
