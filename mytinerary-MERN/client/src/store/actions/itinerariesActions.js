@@ -15,7 +15,7 @@ export const addPlan = (plan) => {
 }
 
 export const getItineraries = () => dispatch => {
-  
+
     axios.get('http://localhost:5000/itineraries/all')
     .then(res=>{ console.log(res);
       dispatch({
@@ -24,8 +24,67 @@ export const getItineraries = () => dispatch => {
       })
 
   })
- 
-  
+
 }
 
+export const getComments = () => dispatch => {
 
+    axios.get('http://localhost:5000/comments/all')
+    .then(res => { console.log(res, 'comments comming');
+      dispatch({
+        type: 'GET_COMMENTS',
+        comments: res.data
+      })
+    })
+    .catch(err => console.log("can't get those comments", err))
+
+
+}
+
+export const getCommentsByItin = (itin) => dispatch => {
+
+  axios.get ('http://localhost:5000/comments/go/' + itin)
+  .then (res => {console.log (res, 'comments comming');
+    dispatch({
+      type: 'GET_COMMENTS_BY_ITIN',
+      comments: res.data
+    })
+  })
+  .catch ( err => console.log('oops, cannot get those comments', err))
+}
+
+// export const addComment = (user, comment) => dispatch => {
+  // let date = new Date();
+  //
+  // let body = {
+  //       user: user,
+  //       itinerary: comment.itinerary,
+  //       description: comment.description,
+  //       date: date.toDateString(),
+  //       likes:""
+  //     }
+  //
+  // axios({
+  //       method: 'post',
+  //       url: 'http://localhost:5000/comments',
+  //       headers: {
+  //       'Content-Type': 'application/json'
+  //       },
+  //       data: body,
+  //
+  //     }).then (res => { console.log(res.status);
+  //         dispatch ({
+  //           type: 'ADD_COMMENT',
+  //           comment: res.data,
+  //           })
+  //
+  //     })
+  //
+  //     .catch(err => (console.log('Your comment did not register', err)))
+
+  export const addComment = (comment) => {
+    return {
+      type: 'ADD_COMMENT',
+      comment: comment
+    }
+  }

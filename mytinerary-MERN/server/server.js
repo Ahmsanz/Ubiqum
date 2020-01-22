@@ -50,7 +50,7 @@ require('./routes/passport')
 require('./routes/passportGoogle')
 
 
-
+app.use('/comments', require ('./routes/comments'))
 app.use('/cities', require('./routes/cities'))
 
 app.use('/users', require('./routes/users'))

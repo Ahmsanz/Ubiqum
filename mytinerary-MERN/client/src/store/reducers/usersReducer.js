@@ -56,7 +56,8 @@ const usersReducer = (state=initState, action) => {
         ...state,
         favourites: [...action.payload]
       }
-    default:
+
+      default:
         console.log("another action")
 
 }

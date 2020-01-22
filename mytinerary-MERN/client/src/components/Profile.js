@@ -16,24 +16,19 @@ class Profile extends Component {
 
     }
 
-    componentWillMount () {
+    componentDidMount () {
       if (localStorage.userToken) {
         this.props.getUserByToken();
-        this.forceUpdate();
 
+      }
+
+      if (localStorage.favs) {
+
+        let ids = localStorage.favs.split(',');
+
+        this.props.getUserFavs(ids);
       }
     }
-
-    componentDidMount() {
-
-        if (localStorage.favs) {
-
-          let ids = localStorage.favs.split(',');
-
-          this.props.getUserFavs(ids);
-        }
-
-      }
 
 
 
@@ -58,24 +53,8 @@ class Profile extends Component {
     }
 
 
-    // getAllFavourites (ids) {
-    //       let favs = [];
-    //
-    //       ids.forEach(id => {
-    //           axios.get ('http://localhost:5000/itineraries/go/' + id)
-    //           .then(res => {console.log('favourites coming right away', res.status); favs.push(res.data)})
-    //         });
-    //
-    //       this.setState({favs: favs})
-    //       return favs;
-    //
-    //
-    //     }
-
-
-
     render () {
-
+      
         let users = this.props.users;
 
         let user = users != null ? (
@@ -155,6 +134,7 @@ class Profile extends Component {
                 <div>
                  <h4 className = 'donde'> You love these itineraries </h4>
                   {favsList}
+
                 </div>
               </div>
             </div>
@@ -163,6 +143,10 @@ class Profile extends Component {
     }
 }
 
+Profile.defaultProps = {
+  favs: [],
+  favourites: []
+}
 const mapStateToProps = (state) => {
   return {
     users: state.user.users,

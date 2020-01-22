@@ -9,32 +9,32 @@ class User extends Component {
   handleClick = (e) => {
     let id = this.props.users._id
     this.props.deleteUser(id);
-    
-   
+
+
     axios.delete('http://localhost:5000/users/' + id)
     .then(res=>console.log(res))
     .catch(err=>console.log(err)
     )
-    
+
     this.props.history.push('/Users');
   }
 
     render () {
-            
+
         const user = this.props.users ? (
-          
+
             <div className="user-card ">
               <div>
-                <img src = {this.props.users.picture} alt = 'do not remember that face' /> 
-              </div> 
-              
+                <img src = {this.props.users.picture} alt = 'do not remember that face' />
+              </div>
+
               <div className = 'user-content'>
                 <h4 className="red-text">{this.props.users.first_name}</h4>
-                <p>{this.props.users.last_name}</p>                
+                <p>{this.props.users.last_name}</p>
                 <button id='kill' className="btn red" onClick={this.handleClick}>Delete user</button>
               </div>
               </div>
-            
+
         ) : (
             <div className="center">Looking for those fuckers...</div>
         )
@@ -47,10 +47,13 @@ class User extends Component {
         }
 }
 
+User.dafaultProps = {
+  users: []
+}
 const mapStateToProps = (state,ownProps) => {
-  
+
   let id = ownProps.match.params.user_id;
-  
+
   return {
     users: state.user.users.find(user => user._id == id)
   }

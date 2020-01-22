@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import {getItineraries} from '../store/actions/itinerariesActions'
-//import {deleteUser} from '../store/actions/usersActions'
 import Navbar2 from './Navbar2'
+import Comments from './Comments'
 
 
 
@@ -13,25 +13,26 @@ class Itinerary extends Component {
       activities:"",
       city: "",
       itinerary: "",
-      start: ""
+      start: "",
+      comments: []
     }
 
-    componentWillMount(){
-     this.getItineraryById()
-
-
-    }
-
-    componentWillUpdate() {
-      this.getPlans();
+    componentDidMount(){
+      this.props.getItineraries();
+      
+     // this.getItineraryById()
 
     }
+
+    // componentDidUpdate () {
+    //   this.getPlans();
+    // }
 
 
     getPlans =  () => {
 
 
-          let itinerary = this.state.start.nest
+          let itinerary = this.props.itinerary.nest
 
          axios.get('http://localhost:5000/activities/plan/' + itinerary)
           .then(res=>{console.log(res); this.setState({activities: res.data})
@@ -40,28 +41,15 @@ class Itinerary extends Component {
 
         }
 
-    getItineraryById () {
+    // getCommentsByItin = () => {
+    //   let itinerary = this.props.itinerary.name;
+    //
+    //   axios.get ('http://localhost:5000/comments/go/' + itinerary)
+    //   .then(res => {console.log('comments', res.data)})
+    //   .catch(err => console.log ('cannot find any comments', err))
+    // }
 
-          let id = this.props.location.pathname.slice(13)
 
-          let itinerary = this.state.start.nest
-
-          axios.get('http://localhost:5000/itineraries/go/' + id)
-          .then(res => {this.setState({start: res.data}); console.log(res.data); sessionStorage.setItem('itinerary_id', res.data._id);
-          sessionStorage.setItem('itinerary_name', res.data.name)
-          sessionStorage.setItem('itinerary_city', res.data.city)
-          sessionStorage.setItem('itinerary_image', res.data.image)
-        })
-          // .then (
-          //   axios.get('http://localhost:5000/activities/plan/' + itinerary)
-          // .then(res=>{this.setState({activities: res.data})
-          // })
-          .catch(err=>console.log(err))
-          // )
-
-          // .catch (err => { console.log('Oops... Something went wrong!', err)})
-
-        }
 
     addFavItinerary (itinerary) {
 
@@ -74,25 +62,28 @@ class Itinerary extends Component {
 
     handleClick = (e) => {
 
-          let itinerary = sessionStorage.itinerary_id
+          let itinerary = this.props.itinerary._id;
 
          this.addFavItinerary(itinerary);
         }
 
 
     render () {
+      console.log(this.state)
+      console.log(this.props);
 
+        let {itinerary} = this.props;
 
-        let itinerary = this.state.start  ? (
+        let renderedItinerary = itinerary != undefined ? (
 
             <div className="post card">
-              <img src= {this.state.start.image} />
-                <h4 className="center">{this.state.start.name}</h4>
-                <p className='center'>{this.state.start.city}</p>
-                <p className='center'>Rating: {this.state.start.rating}</p>
-                <p className='center'>Duration: {this.state.start.duration} hours</p>
-                <p className='center'>Price: {this.state.start.price}€</p>
-                <p className='center'>#{this.state.start.hashtag}</p>
+              <img src= {itinerary.image} />
+                <h4 className="center">{itinerary.name}</h4>
+                <p className='center'>{itinerary.city}</p>
+                <p className='center'>Rating: {itinerary.rating}</p>
+                <p className='center'>Duration: {itinerary.duration} hours</p>
+                <p className='center'>Price: {itinerary.price}€</p>
+                <p className='center'>#{itinerary.hashtag}</p>
                 <button id = 'megusta' onClick={this.handleClick}>Me gusta!</button>
               </div>
 
@@ -101,7 +92,7 @@ class Itinerary extends Component {
             <div className="center">Wait, please</div>
         )
 
-        let {activities} = this.state
+        let {activities} = this.state;
 
 
         let activitiesList = activities.length ? (
@@ -131,11 +122,12 @@ class Itinerary extends Component {
           <Navbar2 />
             <div >
               <div>
-                { itinerary }
+                { renderedItinerary }
               </div>
               <div>
                 <h4 className = 'red-text center'>Take a look at this plans!</h4>
                 { activitiesList }
+                <Comments itin={this.props.itinerary} />
               </div>
             </div>
             </div>
@@ -145,10 +137,10 @@ class Itinerary extends Component {
 
 const mapStateToProps = (state,ownProps) => {
 
-  let id2 = ownProps.location.pathname.slice(13)
+  let id = ownProps.location.pathname.slice(13)
 
   return {
-    itinerary: state.itinerary.itineraries.find(itinerary => itinerary._id == id2)
+    itinerary: state.itinerary.itineraries.find(itinerary => itinerary._id == id)
   }
 }
 

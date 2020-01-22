@@ -1,34 +1,34 @@
 const mongoose = require('mongoose')
 
 const itinerarySchema = new mongoose.Schema({
-  
+
   name: {
       type: String,
-      required: true      
+      required: true
     },
   city: {
-        type: String, 
+        type: String,
         required: true
     },
   rating: {
       type: Number
-      
+
   },
   image: {
-    type: String 
-    
+    type: String
+
   },
   duration: {
       type: String
-      
+
   },
   price: {
       type: Number
-     
+
   },
   hashtags: {
       type: String
-     
+
   },
   nest: {
     type: String
@@ -41,6 +41,9 @@ const itinerarySchema = new mongoose.Schema({
   ],
   favourite: {
     type: Boolean
+  },
+  comments: {
+    type: Array
   }
 
 })
